@@ -58,17 +58,13 @@ module Version1
         use :pagination
         requires :admin_password, type: String, desc: "Admin Password"
       end
-      get  do
-        if params[:admin_password] == 'NP12aq34'
-          users = User
-          .paginate(page: params[:page], per_page: params[:per_page])
-          .order(updated_at: :desc)
+      get do
+        users = User
+        .paginate(page: params[:page], per_page: params[:per_page])
+        .order(updated_at: :desc)
 
-          present :status, "Success"
-          present :data, users, with: Entities::User
-        end
-
-
+        present :status, "Success"
+        present :data, users, with: Entities::User
       end
     end
   end
