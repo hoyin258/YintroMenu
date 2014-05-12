@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  menu_id: MyString
+  name: MyString
+  description: MyText
+  spicy: false
+  image: MyText
+  category_id: 
+
+two:
+  menu_id: MyString
+  name: MyString
+  description: MyText
+  spicy: false
+  image: MyText
+  category_id: 

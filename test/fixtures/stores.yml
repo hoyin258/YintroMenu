@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: 
+  phone: 
+  address: 
+  latitude: 
+  longitude: 
+  open_hours: 
+  description: 
+  image: MyText
+
+two:
+  name: 
+  phone: 
+  address: 
+  latitude: 
+  longitude: 
+  open_hours: 
+  description: 
+  image: MyText

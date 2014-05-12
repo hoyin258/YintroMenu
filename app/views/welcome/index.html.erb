@@ -1,0 +1,13 @@
+<h1>Yintro Menu</h1>
+<p>Welcome to Yintro Menu </p>
+<% @stores.each do |store| %>
+  <tr>
+    <td><%= store.phone %></td>
+    <td><%= store.address %></td>
+    <td><%= store.image %></td>
+    <td><%= link_to 'Show', store %></td>
+  </tr>
+<% end %>
+
+<%= link_to 'New Store', new_store_path %>
+

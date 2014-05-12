@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: 
+  description: 
+  store_id: 
+
+two:
+  name: 
+  description: 
+  store_id: 
