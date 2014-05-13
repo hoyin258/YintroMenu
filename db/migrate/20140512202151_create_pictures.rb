@@ -3,7 +3,7 @@ class CreatePictures < ActiveRecord::Migration
     create_table :pictures do |t|
 
       t.attachment :file
-      t.references :item, index:true
+      t.references :food, index:true
       t.timestamps
 
     end

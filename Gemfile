@@ -55,6 +55,8 @@ gem 'grape-swagger-rails'
 gem 'grape-kaminari'
 gem 'garner'
 
+# Admin
+gem 'activeadmin'
 
 
 # Use ActiveModel has_secure_password

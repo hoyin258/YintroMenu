@@ -15,16 +15,16 @@ module Version1
         present :data, categories, with: Entities::Category
       end
 
-      desc 'Returns Item list by category id'
+      desc 'Returns Food list by category id'
       params do
         use :pagination
       end
       get ":id" do
-        items = Item
+        foods = Food
         .where(category: params[:id])
         .paginate(page: params[:page], per_page: params[:per_page])
         present :status, "Success"
-        present :data, items, with: Entities::Item
+        present :data, foods, with: Entities::Food
       end
     end
   end

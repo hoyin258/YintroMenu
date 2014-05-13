@@ -3,17 +3,17 @@ module Version1
     helpers APIHelper
 
     
-    resource :items do
+    resource :foods do
 
-      desc 'Returns item list'
+      desc 'Returns food list'
       params do
         use :pagination
       end
       get do
-        items = Item
+        foods = Food
         .paginate(page: params[:page], per_page: params[:per_page])
         present :status, "Success"
-        present :data, items, with: Entities::Item
+        present :data, foods, with: Entities::Item
       end
 
     end

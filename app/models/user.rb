@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
   has_many :orders
-  has_many :iorder_tems, through: :orders
+  has_many :items, through: :orders
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 

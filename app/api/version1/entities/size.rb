@@ -1,6 +1,6 @@
 module Version1
   module Entities
-    class Unit < Grape::Entity
+    class Size < Grape::Entity
 
       expose :id, :name
 

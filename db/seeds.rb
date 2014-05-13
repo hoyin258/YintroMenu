@@ -29,12 +29,12 @@ mister_wok = Store.create(
     }
 )
 
-small_unit = Unit.create({
+small_size = Size.create({
                              name: "Small",
                              description: "",
                          })
 
-large_unit = Unit.create({
+large_size = Size.create({
                              name: "Large",
                              description: "",
                          })
@@ -47,40 +47,42 @@ category = Category.create({
                            })
 
 
-item = Item.create({
+food = Food.create({
                        menu_id: "S1",
                        name: "Sesame Chicken",
                        description: "",
                        spicy: false,
-                       image: "https://raw.githubusercontent.com/hoyin258/Misterwok/master/app/src/main/res/drawable-xhdpi/demo_1.jpg",
+                       picture: "https://raw.githubusercontent.com/hoyin258/Misterwok/master/app/src/main/res/drawable-xhdpi/demo_1.jpg",
                        category: category,
                    })
-price =Price.create([{
-                         item: item,
-                         unit: small_unit,
+item =Item.create([{
+                        food: food,
+                         size: small_size,
+                         price: 7.45,
                      },
                      {
-                         item: item,
-                         unit: large_unit,
+                         food: food,
+                         size: large_size,
+                         price: 9.45,
                      }])
 
 
-item = Item.create({
+food = Food.create({
                        menu_id: "S2",
                        name: "General Tso Chicken",
                        description: "",
                        spicy: true,
-                       image: "https://raw.githubusercontent.com/hoyin258/Misterwok/master/app/src/main/res/drawable-xhdpi/demo_1.jpg",
+                       picture: "https://raw.githubusercontent.com/hoyin258/Misterwok/master/app/src/main/res/drawable-xhdpi/demo_1.jpg",
                        category: category,
                    })
-price =Price.create([{
-                         item: item,
-                         unit: small_unit,
+item =Item.create([{
+                         food: food,
+                         size: small_size,
                          price: 7.45,
                      },
                      {
-                         item: item,
-                         unit: large_unit,
+                         food: food,
+                         size: large_size,
                          price: 9.45,
                      }])
 

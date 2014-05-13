@@ -1,4 +1,4 @@
 class Category < ActiveRecord::Base
   belongs_to :store
-  has_many :items
+  has_many :foods
 end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140512202151) do
+ActiveRecord::Schema.define(version: 20140512232901) do
 
   create_table "categories", force: true do |t|
     t.string   "name"
@@ -23,18 +23,36 @@ ActiveRecord::Schema.define(version: 20140512202151) do
 
   add_index "categories", ["store_id"], name: "index_categories_on_store_id"
 
-  create_table "items", force: true do |t|
+  create_table "foods", force: true do |t|
     t.string   "menu_id"
     t.string   "name"
     t.text     "description"
     t.boolean  "spicy"
-    t.text     "image"
+    t.text     "picture"
     t.integer  "category_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "items", ["category_id"], name: "index_items_on_category_id"
+  add_index "foods", ["category_id"], name: "index_foods_on_category_id"
+
+  create_table "items", force: true do |t|
+    t.decimal  "price"
+    t.integer  "food_id"
+    t.integer  "size_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "items", ["food_id"], name: "index_items_on_food_id"
+  add_index "items", ["size_id"], name: "index_items_on_size_id"
+
+  create_table "items_orders", force: true do |t|
+    t.integer  "order_id"
+    t.integer  "item_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "orders", force: true do |t|
     t.string   "order_num"
@@ -46,33 +64,24 @@ ActiveRecord::Schema.define(version: 20140512202151) do
 
   add_index "orders", ["user_id"], name: "index_orders_on_user_id"
 
-  create_table "orders_items_tables", force: true do |t|
-    t.integer "order_id"
-    t.integer "item_id"
-  end
-
   create_table "pictures", force: true do |t|
     t.string   "file_file_name"
     t.string   "file_content_type"
     t.integer  "file_file_size"
     t.datetime "file_updated_at"
-    t.integer  "item_id"
+    t.integer  "food_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "pictures", ["item_id"], name: "index_pictures_on_item_id"
+  add_index "pictures", ["food_id"], name: "index_pictures_on_food_id"
 
-  create_table "prices", force: true do |t|
-    t.decimal  "price"
-    t.integer  "item_id"
-    t.integer  "unit_id"
+  create_table "sizes", force: true do |t|
+    t.string   "name"
+    t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-
-  add_index "prices", ["item_id"], name: "index_prices_on_item_id"
-  add_index "prices", ["unit_id"], name: "index_prices_on_unit_id"
 
   create_table "stores", force: true do |t|
     t.string   "name"
@@ -83,13 +92,6 @@ ActiveRecord::Schema.define(version: 20140512202151) do
     t.text     "open_hours"
     t.text     "description"
     t.text     "image"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "units", force: true do |t|
-    t.string   "name"
-    t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

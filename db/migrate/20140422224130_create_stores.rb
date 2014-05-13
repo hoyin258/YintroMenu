@@ -12,5 +12,7 @@ class CreateStores < ActiveRecord::Migration
 
       t.timestamps
     end
+
+
   end
 end

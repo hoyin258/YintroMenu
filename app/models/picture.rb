@@ -1,6 +1,6 @@
 class Picture < ActiveRecord::Base
 
-  belongs_to :item
+  belongs_to :food
 
   has_attached_file :file,
                     :url  => "/assets/images/:style/:id.:basename.:extension",

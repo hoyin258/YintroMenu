@@ -4,27 +4,29 @@ module Version1
 
     resource :orders do
 
-      # desc "Create Order"
-      # params do
-      #   requires :id, type: Integer, desc: "Item id."
-      #   requires :image, type: Rack::Multipart::UploadedFile, desc: "Image file."
-      # end
-      # post do
-      #   authenticate!
-      #   image = params[:image]
-      #   image_hash = {
-      #       filename: image[:filename],
-      #       type: image[:type],
-      #       headers: image[:head],
-      #       tempfile: image[:tempfile]
-      #   }
-      #   picture = Picture.new
-      #   picture.item_id = params[:id]
-      #   picture.file = ActionDispatch::Http::UploadedFile.new(image_hash)
-      #   picture.save
-      #   present :status, "Success"
-      #   present :data, picture, with: Version1::Entities::Picture
-      # end
+      desc "Create Order"
+      params do
+        requires :items, type: String
+        requires :phone, type: String
+      end
+      post do
+        authenticate!
+
+        item_arr = params[:items].split(/\s*,\s*/).map {|char| char.to_i }
+
+        order  = Order.create({
+                         order_num: Time.now.strftime("%y%m%d%H%M%S").to_s + @current_user.id.to_s,
+                         phone: params[:phone],
+                         user: @current_user
+                     })
+
+        item_arr.each do |item|
+          order.items << Item.find(item)
+        end
+
+        present :status, "Success"
+        present :data, order, with: Version1::Entities::Order
+      end
 
     end
   end

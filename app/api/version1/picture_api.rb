@@ -12,7 +12,7 @@ module Version1
 
       desc "Upload an image."
       params do
-        requires :id, type: Integer, desc: "Item id."
+        requires :id, type: Integer, desc: "food id."
         requires :image, type: Rack::Multipart::UploadedFile, desc: "Image file."
       end
       post do
@@ -25,7 +25,7 @@ module Version1
             tempfile: image[:tempfile]
         }
         picture = Picture.new
-        picture.item_id = params[:id]
+        picture.food_id = params[:id]
         picture.file = ActionDispatch::Http::UploadedFile.new(image_hash)
         picture.save
         present :status, "Success"

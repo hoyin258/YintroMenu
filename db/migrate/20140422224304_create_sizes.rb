@@ -1,6 +1,6 @@
-class CreateUnits < ActiveRecord::Migration
+class CreateSizes < ActiveRecord::Migration
   def change
-    create_table :units do |t|
+    create_table :sizes do |t|
       t.string :name
       t.text :description
 
