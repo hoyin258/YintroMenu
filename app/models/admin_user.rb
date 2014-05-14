@@ -1,6 +1,9 @@
 class AdminUser < ActiveRecord::Base
 
-  has_one :store ,  :through => :store_id
+  belongs_to :store
+  has_many :categories,  through: :store
+  # has_many :foods,  through: :store
+  # has_many :items,  through: :foods
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
@@ -11,5 +14,6 @@ class AdminUser < ActiveRecord::Base
   def display_name
     self.email
   end
+
 
 end

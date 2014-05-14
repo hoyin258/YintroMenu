@@ -60,7 +60,7 @@ ActiveRecord::Schema.define(version: 20140513235502) do
   add_index "categories", ["store_id"], name: "index_categories_on_store_id"
 
   create_table "foods", force: true do |t|
-    t.string   "menu_id"
+    t.string   "menu_number"
     t.string   "name"
     t.text     "description"
     t.boolean  "spicy"

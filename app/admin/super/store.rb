@@ -4,7 +4,6 @@ ActiveAdmin.register Store, namespace: :super_admin do
 
 
   permit_params :name, :phone, :address, :latitude, :longitude, :open_hours, :description, :image
-  # , :admin_user_id
 
   index do
     selectable_column
@@ -34,8 +33,6 @@ ActiveAdmin.register Store, namespace: :super_admin do
       f.input :open_hours
       f.input :description
       f.input :image
-
-      # f.input :admin_user, :as => :select, :collection => AdminUser.all
 
     end
     f.actions

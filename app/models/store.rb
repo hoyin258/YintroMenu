@@ -1,9 +1,10 @@
 class Store < ActiveRecord::Base
 
-  # belongs_to :admin_user
+  has_one :admin_user
 
   has_many :categories
   has_many :foods,  through: :categories
+  has_many :items,  through: :foods
 
 
   def display_name

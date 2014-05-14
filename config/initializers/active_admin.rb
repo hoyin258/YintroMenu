@@ -68,6 +68,7 @@ ActiveAdmin.setup do |config|
   # within the application controller.
   config.authentication_method = :authenticate_admin_user!
 
+
   # == User Authorization
   #
   # Active Admin will automatically call an authorization
@@ -95,6 +96,7 @@ ActiveAdmin.setup do |config|
   # (within the application controller) to return the currently logged in user.
   config.current_user_method = :current_admin_user
 
+
   # == Logging Out
   #
   # Active Admin displays a logout link on each screen. These
@@ -120,7 +122,7 @@ ActiveAdmin.setup do |config|
   # roots for each namespace.
   #
   # Default:
-  # config.root_to = 'categories#index'
+  # config.root_to = 'dashboard#show'
 
 
   # == Admin Comments

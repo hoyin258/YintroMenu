@@ -48,7 +48,7 @@ category = Category.create({
 
 
 food = Food.create({
-                       menu_id: "S1",
+                       menu_number: "S1",
                        name: "Sesame Chicken",
                        description: "",
                        spicy: false,
@@ -68,7 +68,7 @@ item =Item.create([{
 
 
 food = Food.create({
-                       menu_id: "S2",
+                       menu_number: "S2",
                        name: "General Tso Chicken",
                        description: "",
                        spicy: true,
