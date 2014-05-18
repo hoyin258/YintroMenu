@@ -11,10 +11,13 @@ ActiveAdmin.setup do |config|
 
   config.namespace :admin do |admin|
     admin.site_title = "餐單管理員"
+    admin.authentication_method = :authenticate_admin_user!
+
   end
 
   config.namespace :super_admin do |super_admin|
     super_admin.site_title = "系統管理員"
+    super_admin.authentication_method = :authenticate_super_admin_user!
   end
 
 
@@ -66,7 +69,8 @@ ActiveAdmin.setup do |config|
   #
   # This setting changes the method which Active Admin calls
   # within the application controller.
-  config.authentication_method = :authenticate_admin_user!
+
+
 
 
   # == User Authorization

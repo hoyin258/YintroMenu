@@ -5,7 +5,7 @@ class CreateFoods < ActiveRecord::Migration
       t.string :name
       t.text :description
       t.boolean :spicy
-      t.text :picture
+      t.attachment :picture
       t.references :category, index: true
 
       t.timestamps

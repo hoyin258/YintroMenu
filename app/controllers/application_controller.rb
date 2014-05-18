@@ -4,4 +4,13 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
 
+  def authenticate_super_admin_user!
+    authenticate_admin_user!
+
+    unless current_admin_user.super_admin?
+      raise SecurityError
+    end
+
+  end
+
 end

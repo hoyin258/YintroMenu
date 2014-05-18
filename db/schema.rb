@@ -64,7 +64,10 @@ ActiveRecord::Schema.define(version: 20140513235502) do
     t.string   "name"
     t.text     "description"
     t.boolean  "spicy"
-    t.text     "picture"
+    t.string   "picture_file_name"
+    t.string   "picture_content_type"
+    t.integer  "picture_file_size"
+    t.datetime "picture_updated_at"
     t.integer  "category_id"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -100,18 +103,6 @@ ActiveRecord::Schema.define(version: 20140513235502) do
 
   add_index "orders", ["user_id"], name: "index_orders_on_user_id"
 
-  create_table "pictures", force: true do |t|
-    t.string   "file_file_name"
-    t.string   "file_content_type"
-    t.integer  "file_file_size"
-    t.datetime "file_updated_at"
-    t.integer  "food_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "pictures", ["food_id"], name: "index_pictures_on_food_id"
-
   create_table "sizes", force: true do |t|
     t.string   "name"
     t.text     "description"
@@ -127,7 +118,10 @@ ActiveRecord::Schema.define(version: 20140513235502) do
     t.decimal  "longitude"
     t.text     "open_hours"
     t.text     "description"
-    t.text     "image"
+    t.string   "picture_file_name"
+    t.string   "picture_content_type"
+    t.integer  "picture_file_size"
+    t.datetime "picture_updated_at"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

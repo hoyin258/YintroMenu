@@ -1,12 +1,13 @@
 ActiveAdmin.register Food do
 
-  menu label: "食品" ,priority: 2
+  menu label: "食品", priority: 2
 
-  permit_params :menu_number, :name, :description, :spicy, :picture, :category_id
+  permit_params :menu_number, :name, :description, :spicy, :picture, :category_id,
+  items_attributes: [ :id, :price, :size_id, :_destroy ]
 
   controller do
     def scoped_collection
-      current_admin_user.store.foods
+      Food.joins(category: :store).where("stores.id" => current_admin_user.store_id)
     end
   end
 
@@ -18,7 +19,21 @@ ActiveAdmin.register Food do
     column :name
     column :description
     column :spicy
+    column :picture
     actions
+  end
+
+  show do |food|
+    attributes_table do
+      row :category
+      row :menu_number
+      row :name
+      row :description
+      row :spicy
+      row :picture do
+        image_tag(food.picture.url(:thumb)) unless food.picture.nil?
+      end
+    end
   end
 
   form do |f|
@@ -27,8 +42,15 @@ ActiveAdmin.register Food do
       f.input :name
       f.input :description
       f.input :spicy
-      f.input :picture
+      f.input :picture, :as => :file,:required => false
       f.input :category, as: :select, collection: Category.where(store_id: current_admin_user.store_id)
+
+        f.has_many :items, allow_destroy: true  do |item|
+
+          item.input :price
+          item.input :size
+        end
+
     end
 
     f.actions

@@ -24,7 +24,7 @@ module Version1
         .where(category: params[:id])
         .paginate(page: params[:page], per_page: params[:per_page])
         present :status, "Success"
-        present :data, foods, with: Entities::Food
+        present :data, foods, with: Entities::Food,type: :full
       end
     end
   end

@@ -8,7 +8,7 @@ class CreateStores < ActiveRecord::Migration
       t.decimal :longitude
       t.text :open_hours
       t.text :description
-      t.text :image
+      t.attachment :picture
 
       t.timestamps
     end

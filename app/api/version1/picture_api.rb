@@ -28,6 +28,11 @@ module Version1
         picture.food_id = params[:id]
         picture.file = ActionDispatch::Http::UploadedFile.new(image_hash)
         picture.save
+
+        food = Food.find(params[:id])
+        food.picture_id = picture
+        food.save
+
         present :status, "Success"
         present :data, picture, with: Version1::Entities::Picture
       end

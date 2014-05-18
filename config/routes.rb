@@ -8,12 +8,6 @@ YintroMenu::Application.routes.draw do
   mount GrapeSwaggerRails::Engine => '/'
 
 
-  # resources :orders
-  # resources :users
-  # resources :items
-  # resources :units
-  # resources :categories
-  # resources :stores
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
