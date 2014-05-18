@@ -16,16 +16,16 @@
 #
 development:
 
-#  adapter: sqlite3
-#  pool: 5
-#  timeout: 5000
-#  database: db/test.sqlite3
-  adapter: postgresql
-  encoding: unicode
-  database: YintroMenu_development
+  adapter: sqlite3
   pool: 5
-  username: hoyin
-  password:
+  timeout: 5000
+  database: db/test.sqlite3
+#  adapter: postgresql
+#  encoding: unicode
+#  database: YintroMenu_development
+#  pool: 5
+#  username: hoyin
+#  password:
 
 
 

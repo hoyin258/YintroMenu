@@ -38,7 +38,6 @@ class API < Grape::API
 
   mount Version1::UserAPI
   mount Version1::OrderAPI
-  mount Version1::PictureAPI
 
   add_swagger_documentation :base_path => '/api',
                             :markdown => true,
