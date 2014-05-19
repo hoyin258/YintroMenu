@@ -56,7 +56,6 @@ module Version1
       desc 'Returns user list'
       params do
         use :pagination
-        requires :admin_password, type: String, desc: "Admin Password"
       end
       get do
         users = User

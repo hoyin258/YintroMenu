@@ -12,6 +12,7 @@ module Version1
         foods = Food
         .where(category: params[:id])
         .paginate(page: params[:page], per_page: params[:per_page])
+        .order(:id)
         present :status, "Success"
         present :data, foods, with: Entities::Food
       end

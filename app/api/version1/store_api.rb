@@ -18,6 +18,7 @@ module Version1
         categories = Category
         .where(store_id: params[:id])
         .paginate(page: params[:page], per_page: params[:per_page])
+        .order(id: :asc)
         present :status, "Success"
         present :data, categories, with: Entities::Category
       end
