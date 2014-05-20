@@ -1,6 +1,6 @@
-ActiveAdmin.register Category do
+ActiveAdmin.register Order do
 
-  menu label: "分類" ,priority: 3
+  menu label: "訂單" ,priority: 1
 
   scope_to :current_admin_user
   permit_params :name, :description, :store_id
