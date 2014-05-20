@@ -3,7 +3,7 @@ ActiveAdmin.register Food do
   menu label: "食品", priority: 2
 
   permit_params :menu_number, :name, :description, :spicy, :picture, :category_id,
-  items_attributes: [ :id, :price, :size_id, :_destroy ]
+                items_attributes: [:id, :price, :size_id, :_destroy]
 
   controller do
     def scoped_collection
@@ -34,6 +34,16 @@ ActiveAdmin.register Food do
         image_tag(food.picture.url(:thumb)) unless food.picture.nil?
       end
     end
+
+    if food.items and food.items.count >0
+      panel 'Price' do
+        attributes_table_for food.items do
+          row :id
+          row :size
+          rows :price
+        end
+      end
+    end
   end
 
   form do |f|
@@ -42,17 +52,13 @@ ActiveAdmin.register Food do
       f.input :name
       f.input :description
       f.input :spicy
-      f.input :picture, :as => :file,:required => false
+      f.input :picture, :as => :file, :required => false
       f.input :category, as: :select, collection: Category.where(store_id: current_admin_user.store_id)
-
-        f.has_many :items, allow_destroy: true  do |item|
-
-          item.input :price
-          item.input :size
-        end
-
+      f.has_many :items, allow_destroy: true do |item|
+        item.input :price
+        item.input :size
+      end
     end
-
     f.actions
   end
 

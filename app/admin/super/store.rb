@@ -1,6 +1,6 @@
 ActiveAdmin.register Store, namespace: :super_admin do
 
-  menu label: "店鋪"
+  menu label: "店鋪" , priority: 1
 
 
   permit_params :name, :phone, :address, :latitude, :longitude, :open_hours, :description, :picture

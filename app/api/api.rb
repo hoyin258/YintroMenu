@@ -13,10 +13,7 @@ class API < Grape::API
   helpers APIHelper
 
   rescue_from ActiveRecord::RecordNotFound do |e|
-    Rack::Response.new({
-                           status: "Fail",
-                           message: e.message
-                       }.to_json).finish
+    Rack::Response.new({status: "Fail", message: e.message}.to_json).finish
   end
 
   rescue_from Exception do |e|
@@ -27,15 +24,12 @@ class API < Grape::API
       error = "Fail"
       message = "An error occurred"
     end
-    Rack::Response.new({error: error,
-                        message: message
-                       }.to_json).finish
+    Rack::Response.new({error: error, message: message}.to_json).finish
   end
 
 
   mount Version1::StoreAPI
   mount Version1::CategoryAPI
-
   mount Version1::UserAPI
   mount Version1::OrderAPI
 

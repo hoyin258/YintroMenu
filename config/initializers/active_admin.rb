@@ -12,12 +12,14 @@ ActiveAdmin.setup do |config|
   config.namespace :admin do |admin|
     admin.site_title = "餐單管理員"
     admin.authentication_method = :authenticate_admin_user!
+    admin.root_to = 'foods#index'
 
   end
 
   config.namespace :super_admin do |super_admin|
     super_admin.site_title = "系統管理員"
     super_admin.authentication_method = :authenticate_super_admin_user!
+    super_admin.root_to = 'stores#index'
   end
 
 

@@ -1,5 +1,5 @@
-ActiveAdmin.register_page "Dashboard" do
-
-  menu false
-
-end
+# ActiveAdmin.register_page "Dashboard" do
+#
+#   menu false
+#
+# end

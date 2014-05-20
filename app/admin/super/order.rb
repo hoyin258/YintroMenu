@@ -1,7 +1,7 @@
-ActiveAdmin.register User, namespace: :super_admin do
+ActiveAdmin.register Order,  namespace: :super_admin do
 
-  menu label: "用家",priority: 3
-  
+  menu label: "訂單" ,priority: 5
+
   # See permitted parameters documentation:
   # https://github.com/gregbell/active_admin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
   #

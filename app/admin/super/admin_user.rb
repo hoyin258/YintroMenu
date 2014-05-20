@@ -1,6 +1,6 @@
 ActiveAdmin.register AdminUser, namespace: :super_admin do
 
-  menu label: "管理員"
+  menu label: "管理員" , priority: 2
 
   permit_params :email, :password, :password_confirmation , :store_id
 
