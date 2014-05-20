@@ -3,8 +3,10 @@ class Store < ActiveRecord::Base
   has_one :admin_user
 
   has_many :categories
+  has_many :orders
   has_many :foods,  through: :categories
   has_many :items,  through: :foods
+
 
 
 

@@ -14,15 +14,17 @@ module Version1
 
         item_arr = params[:items].split(/\s*,\s*/).map {|char| char.to_i }
 
-        order  = Order.create({
+        order  = Order.new({
                          order_num: Time.now.strftime("%y%m%d%H%M%S").to_s + @current_user.id.to_s,
                          phone: params[:phone],
                          user: @current_user
                      })
 
+        order.store_id = Item.find(item_arr.first).food.category.store.id
         item_arr.each do |item|
           order.items << Item.find(item)
         end
+        order.save
 
         present :status, "Success"
         present :data, order, with: Version1::Entities::Order

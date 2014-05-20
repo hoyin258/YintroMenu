@@ -1,14 +1,7 @@
-ActiveAdmin.register Order do
+ActiveAdmin.register User, namespace: :super_admin do
 
-  menu label: "訂單" ,priority: 1
-
-
-  controller do
-    def scoped_collection
-      Order.where(store_id: current_admin_user.store_id)
-    end
-  end
-
+  menu label: "用家"
+  
   # See permitted parameters documentation:
   # https://github.com/gregbell/active_admin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
   #
