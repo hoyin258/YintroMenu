@@ -40,7 +40,7 @@ ActiveAdmin.register Food do
         attributes_table_for food.items do
           row :id
           row :size
-          rows :price
+          row :price
         end
       end
     end

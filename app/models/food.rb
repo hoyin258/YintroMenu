@@ -1,8 +1,9 @@
 class Food < ActiveRecord::Base
+
   belongs_to :category
+
   has_many :items
   has_many :sizes, through: :items
-
 
   accepts_nested_attributes_for :items, allow_destroy: true
 

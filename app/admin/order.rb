@@ -1,6 +1,6 @@
 ActiveAdmin.register Order do
 
-  menu label: "訂單" ,priority: 1
+  menu label: "訂單", priority: 1
 
 
   controller do
@@ -9,17 +9,36 @@ ActiveAdmin.register Order do
     end
   end
 
-  # See permitted parameters documentation:
-  # https://github.com/gregbell/active_admin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
-  #
-  # permit_params :list, :of, :attributes, :on, :model
-  #
-  # or
-  #
-  # permit_params do
-  #  permitted = [:permitted, :attributes]
-  #  permitted << :other if resource.something?
-  #  permitted
-  # end
-  
+
+  show do |order|
+    attributes_table do
+      row :order_num
+      row :phone
+      row :created_at
+
+      attributes_table_for order.user do
+        row :facebook_name
+        row :link do
+          link_to order.user.facebook_id, order.user.facebook_url, :target => '_blank'
+        end
+      end
+    end
+
+
+
+    if order.items and order.items.count > 0
+
+      panel 'Order Detail' do
+        ul
+        order.items.each do |item|
+          li
+          span item.food.name
+          br
+          span  item.price
+        end
+
+      end
+    end
+  end
+
 end

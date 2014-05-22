@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+
   has_many :orders
   has_many :items, through: :orders
 
@@ -17,6 +18,10 @@ class User < ActiveRecord::Base
   # 把Token 轉為Sha1 Hash
   def User.digest(token)
     Digest::SHA1.hexdigest(token.to_s)
+  end
+
+  def facebook_url
+    "http://facbook.com/#{facebook_id}"
   end
 
   private

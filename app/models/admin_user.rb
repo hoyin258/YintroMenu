@@ -1,9 +1,7 @@
 class AdminUser < ActiveRecord::Base
 
   belongs_to :store
-  has_many :categories,  through: :store
-  # has_many :foods,  through: :store
-  # has_many :items,  through: :foods
+  has_many :categories, through: :store
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable

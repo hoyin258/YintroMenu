@@ -4,21 +4,19 @@ class Store < ActiveRecord::Base
 
   has_many :categories
   has_many :orders
-  has_many :foods,  through: :categories
-  has_many :items,  through: :foods
-
-
+  has_many :foods, through: :categories
+  has_many :items, through: :foods
 
 
   has_attached_file :picture,
-                    :url  => "/assets/images/:style/:id.:basename.:extension",
+                    :url => "/assets/images/:style/:id.:basename.:extension",
                     :path => ":rails_root/public/assets/images/:style/:id.:basename.:extension",
-                    :styles => { :large => "1024x1024>", :thumb => "100x100>" },
+                    :styles => {:large => "1024x1024>", :thumb => "100x100>"},
                     :default_url => "/images/:style/missing.png"
 
   validates_attachment :picture,
-                       :content_type => { :content_type => /\Aimage/ },
-                       :size => { :less_than => 2.megabytes  }
+                       :content_type => {:content_type => /\Aimage/},
+                       :size => {:less_than => 2.megabytes}
 
 
   def display_name
