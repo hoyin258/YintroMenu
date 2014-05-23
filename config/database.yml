@@ -54,5 +54,5 @@ production:
   encoding: unicode
   database: yintro_menu_production
   pool: 5
-  username: hoyin
+  username: yintro_menu
   password:  <%= ENV['YINTRO_MENU_DATABASE_PASSWORD'] %>
