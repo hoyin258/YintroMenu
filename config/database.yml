@@ -52,7 +52,7 @@ test:
 production:
   adapter: postgresql
   encoding: unicode
-  database: YintroMenu_production
+  database: yintro_menu_production
   pool: 5
   username: yintro_menu
   password:  <%= ENV['YINTRO_MENU_DATABASE_PASSWORD'] %>
