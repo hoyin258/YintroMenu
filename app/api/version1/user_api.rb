@@ -17,7 +17,7 @@ module Version1
         if params[:api_key] == 'android' or
             params[:api_key] == 'ios'
           user = User.find_by_facebook_id(params[:facebook_id])
-          if !user
+          unless user
             user = User.new(
                 facebook_name: params[:facebook_name],
                 facebook_id: params[:facebook_id],

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140520040243) do
+ActiveRecord::Schema.define(version: 20140523164756) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -27,6 +27,15 @@ ActiveRecord::Schema.define(version: 20140520040243) do
   add_index "active_admin_comments", ["author_type", "author_id"], name: "index_active_admin_comments_on_author_type_and_author_id"
   add_index "active_admin_comments", ["namespace"], name: "index_active_admin_comments_on_namespace"
   add_index "active_admin_comments", ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource_type_and_resource_id"
+
+  create_table "admin_gcms", force: true do |t|
+    t.string   "registration"
+    t.integer  "admin_user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "admin_gcms", ["admin_user_id"], name: "index_admin_gcms_on_admin_user_id"
 
   create_table "admin_users", force: true do |t|
     t.string   "email",                  default: "",    null: false

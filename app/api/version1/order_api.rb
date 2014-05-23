@@ -26,6 +26,8 @@ module Version1
         end
         order.save
 
+        order.store.admin_user.send_push
+
         present :status, "Success"
         present :data, order, with: Version1::Entities::Order
       end

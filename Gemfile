@@ -60,6 +60,9 @@ gem 'devise'
 gem 'activeadmin', github: 'gregbell/active_admin'
 
 
+#Gcm
+gem 'gcm'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
