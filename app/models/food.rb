@@ -31,11 +31,11 @@ class Food < ActiveRecord::Base
   end
 
   scope :by_store_id,  lambda { |id|
-    includes(category: :store, items: :size).where("stores.id" => id)
+    includes(category: :store, items: :size).where("stores.id" => id).order(:id)
   }
 
   scope :by_category_id,  lambda { |id|
-    includes(items: :size).where(category: id)
+    includes(items: :size).where(category: id).order(:id)
   }
 
 end
