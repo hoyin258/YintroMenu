@@ -1,5 +1,7 @@
 class API < Grape::API
 
+  include Grape::Rails::Cache
+
   prefix 'v1'
   version 'v1', using: :header, vendor: 'some_vendor'
   format :json
@@ -11,6 +13,7 @@ class API < Grape::API
   end
 
   helpers APIHelper
+
 
   rescue_from ActiveRecord::RecordNotFound do |e|
     Rack::Response.new({status: "Fail", message: e.message}.to_json).finish

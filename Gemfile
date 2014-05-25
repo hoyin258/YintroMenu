@@ -54,6 +54,7 @@ gem 'grape-swagger'
 gem 'grape-swagger-rails'
 gem 'grape-kaminari'
 gem 'garner'
+gem 'grape-rails-cache'
 
 # Admin
 gem 'devise'

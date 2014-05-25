@@ -4,11 +4,13 @@ module Version1
 
     resource :stores do
 
+
       desc 'Returns store detail by store id'
       get ":id" do
         present :status, "Success"
         present :data, Store.find(params[:id]), with: Entities::Store
       end
+
 
       desc 'Returns categories list by store id'
       params do
@@ -23,12 +25,17 @@ module Version1
         present :data, categories, with: Entities::Category
       end
 
+
       desc 'Returns all food by store id'
       get ":id/foods" do
         foods = Food.by_store_id(params[:id])
-        present :status, "Success"
-        present :data, foods, with: Entities::Food
+
+        cache(key: "api:posts:#{params[:id]}", expires_in: 1.minutes) do
+          present :status, "Success"
+          present :data, foods, with: Entities::Food
+        end
       end
+
 
     end
   end
