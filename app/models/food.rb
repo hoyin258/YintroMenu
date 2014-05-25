@@ -11,8 +11,7 @@ class Food < ActiveRecord::Base
                     :url  => "/assets/images/:style/:id.:basename.:extension",
                     :path => ":rails_root/public/assets/images/:style/:id.:basename.:extension",
                     :styles => { :large => "1024x1024>", :thumb => "100x100>" },
-                    :default_url => "/images/missing.jpg"
-
+                    :default_url => "/assetsimages/missing.jpg"
   validates_attachment :picture,
                        :content_type => { :content_type => /\Aimage/ },
                        :size => { :less_than => 2.megabytes  }
