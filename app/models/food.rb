@@ -11,7 +11,7 @@ class Food < ActiveRecord::Base
                     :url  => "/assets/images/:style/:id.:basename.:extension",
                     :path => ":rails_root/public/assets/images/:style/:id.:basename.:extension",
                     :styles => { :large => "1024x1024>", :thumb => "100x100>" },
-                    :default_url => "/images/:style/missing.png"
+                    :default_url => "/images/missing.jpg"
 
   validates_attachment :picture,
                        :content_type => { :content_type => /\Aimage/ },
@@ -29,4 +29,13 @@ class Food < ActiveRecord::Base
   def thumb
     picture.url :thumb
   end
+
+  scope :by_store_id,  lambda { |id|
+    includes(category: :store, items: :size).where("stores.id" => id)
+  }
+
+  scope :by_category_id,  lambda { |id|
+    includes(items: :size).where(category: id)
+  }
+
 end

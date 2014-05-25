@@ -10,7 +10,7 @@ module Version1
       end
       get ":id" do
         foods = Food
-        .where(category: params[:id])
+        .by_category_id(params[:id])
         .paginate(page: params[:page], per_page: params[:per_page])
         .order(:id)
         present :status, "Success"

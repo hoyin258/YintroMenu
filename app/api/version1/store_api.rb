@@ -23,6 +23,13 @@ module Version1
         present :data, categories, with: Entities::Category
       end
 
+      desc 'Returns all food by store id'
+      get ":id/foods" do
+        foods = Food.by_store_id(params[:id])
+        present :status, "Success"
+        present :data, foods, with: Entities::Food
+      end
+
     end
   end
 end
