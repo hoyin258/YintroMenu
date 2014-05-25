@@ -37,6 +37,21 @@ module Version1
       end
 
 
+      desc 'Returns all order by store id'
+      params do
+        requires :email, type: String
+        requires :password, type: String
+      end
+      get ":id/orders" do
+        admin_user = AdminUser.find_by(email: params[:email], store_id: params[:id])
+        if admin_user.valid_password?(params[:password])
+          present :status, "Success"
+          present :data, Order.by_store_id(params[:id]), with: Entities::Order
+        else
+          present :status, "Fail"
+        end
+      end
+
     end
   end
 end

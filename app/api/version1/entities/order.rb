@@ -3,8 +3,10 @@ module Version1
     class Order < Grape::Entity
 
       expose :order_num, :phone
-      expose :items, using: Version1::Entities::Item
+      expose :items, using: Version1::Entities::OrderItem
 
     end
+
+
   end
 end
