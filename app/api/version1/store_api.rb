@@ -41,12 +41,17 @@ module Version1
       params do
         requires :email, type: String
         requires :password, type: String
+        use :pagination
       end
       get ":id/orders" do
         admin_user = AdminUser.find_by(email: params[:email], store_id: params[:id])
         if admin_user.valid_password?(params[:password])
           present :status, "Success"
-          present :data, Order.by_store_id(params[:id]), with: Entities::Order
+          present :data,
+                  Order.by_store_id(params[:id])
+                  .paginate(page: params[:page], per_page: params[:per_page]), with: Entities::Order
+
+
         else
           error!({error: "401 Unauthorized"}, 401)
         end

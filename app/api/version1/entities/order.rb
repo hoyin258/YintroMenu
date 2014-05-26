@@ -5,6 +5,7 @@ module Version1
       expose :order_num, :phone
       expose :items, using: Version1::Entities::OrderItem
 
+      expose :created_at
     end
 
 
