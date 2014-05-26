@@ -32,8 +32,7 @@ module Version1
           present :status, "Success"
           present :data, token
         else
-          present :status, "Fail"
-          present :data, "Incorrect API Key, Please request API Key from the admin"
+          error!({error: "401 Incorrect API Key, Please request API Key from the admin"}, 401)
         end
       end
 

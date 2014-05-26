@@ -17,10 +17,9 @@ module Version1
           admin_user.admin_gcms.where(registration: params[:gcm_id]).first_or_create
           present :status, "Success"
         else
-          present :status, "Fail"
+          error!({error: "401 Unauthorized"}, 401)
         end
       end
-
     end
   end
 end

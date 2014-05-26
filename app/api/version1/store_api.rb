@@ -48,7 +48,7 @@ module Version1
           present :status, "Success"
           present :data, Order.by_store_id(params[:id]), with: Entities::Order
         else
-          present :status, "Fail"
+          error!({error: "401 Unauthorized"}, 401)
         end
       end
 
