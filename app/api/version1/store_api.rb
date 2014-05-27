@@ -51,7 +51,6 @@ module Version1
                   Order.by_store_id(params[:id])
                   .paginate(page: params[:page], per_page: params[:per_page]), with: Entities::Order
 
-
         else
           error!({error: "401 Unauthorized"}, 401)
         end

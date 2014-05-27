@@ -6,7 +6,12 @@ class Order < ActiveRecord::Base
   has_and_belongs_to_many :items, through: :items_orders
 
   scope :by_store_id, lambda { |id|
-    joins(items: [:food, :size]).includes(items: [:food, :size]).where(store_id: id).order(id: :desc )
+    joins(items: [:food, :size])
+    .joins(:user)
+    .includes(items: [:food, :size])
+    .includes(:user)
+    .where(store_id: id)
+    .order(id: :desc)
   }
 
 
