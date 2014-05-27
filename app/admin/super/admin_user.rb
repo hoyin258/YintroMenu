@@ -16,6 +16,26 @@ ActiveAdmin.register AdminUser, namespace: :super_admin do
     actions
   end
 
+  show do |admin_user|
+    attributes_table do
+      row :email
+      row :current_sign_in_at
+      row :sign_in_count
+      row :created_at
+      row :store
+    end
+
+    if admin_user.admin_gcms and admin_user.admin_gcms.count >0
+      panel 'GCM' do
+        attributes_table_for admin_user.admin_gcms do
+          row :registration
+        end
+      end
+    end
+  end
+
+
+
   filter :email
   filter :current_sign_in_at
   filter :sign_in_count

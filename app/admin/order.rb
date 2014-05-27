@@ -32,9 +32,8 @@ ActiveAdmin.register Order do
         ul
         order.items.each do |item|
           li
-          span item.food.name
-          br
-          span  item.price
+            item.food.name
+            item.price
         end
 
       end
