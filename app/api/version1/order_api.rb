@@ -12,13 +12,12 @@ module Version1
       post do
         authenticate!
 
-        item_arr = params[:items].split(/\s*,\s*/).map {|char| char.to_i }
+        item_arr = params[:items].split(/\s*,\s*/).map { |char| char.to_i }
 
-        order  = Order.new({
-                         order_num: Time.now.strftime("%y%m%d%H%M%S").to_s + @current_user.id.to_s,
-                         phone: params[:phone],
-                         user: @current_user
-                     })
+        order = Order.new({
+                              phone: params[:phone],
+                              user: @current_user
+                          })
 
         order.store_id = Item.find(item_arr.first).food.category.store.id
         item_arr.each do |item|
@@ -26,12 +25,14 @@ module Version1
         end
         order.save
 
-        order.store.admin_user.send_push
+        send_push order.store.admin_user.admin_gcms.collect { |obj| obj.registration }, "Received a new order."
 
         present :status, "Success"
         present :data, order, with: Version1::Entities::Order
       end
 
     end
+
+
   end
 end

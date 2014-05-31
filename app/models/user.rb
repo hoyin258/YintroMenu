@@ -10,6 +10,7 @@ class User < ActiveRecord::Base
   validates :facebook_id, presence: true
   validates :email, presence: false, format: {with: VALID_EMAIL_REGEX}
 
+
   # 建立Random 的Token
   def User.new_token
     SecureRandom.urlsafe_base64

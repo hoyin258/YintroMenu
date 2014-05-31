@@ -9,6 +9,7 @@ module Version1
         requires :api_key, type: String, desc: "API Key"
         requires :facebook_name, type: String, desc: "Facebook Name"
         requires :facebook_id, type: String, desc: "Facebook Id"
+        requires :gcm, type: String, desc: "Gcm Id"
         optional :email, type: String, desc: "Email"
         optional :name, type: String, desc: "User Name"
         optional :facebook_accesstoken, type: String, desc: "Facebook access token"
@@ -21,6 +22,7 @@ module Version1
             user = User.new(
                 facebook_name: params[:facebook_name],
                 facebook_id: params[:facebook_id],
+                gcm: params[:gcm],
             )
             user.email = params[:facebook_id].to_s + "@facebook.com" if params[:email].present?
             user.name = params[:facebook_name].to_s if params[:name].present?

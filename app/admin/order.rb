@@ -24,8 +24,6 @@ ActiveAdmin.register Order do
       end
     end
 
-
-
     if order.items and order.items.count > 0
 
       panel 'Order Detail' do

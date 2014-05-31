@@ -1,6 +1,8 @@
 module APIHelper
   extend Grape::API::Helpers
 
+  API_KEY ="AIzaSyC7eY_FTyMXrEtXcLxgZ2iItFTb8vcwbdo"
+
 
   def current_user
     token = params[:token]
@@ -10,6 +12,12 @@ module APIHelper
 
   def authenticate!
     error!({error: "401 Unauthorized"}, 401) unless current_user
+  end
+
+  def send_push(registration_ids, message)
+    gcm = GCM.new(API_KEY)
+    options = {data: {message: message}}
+    gcm.send_notification(registration_ids, options)
   end
 
 
