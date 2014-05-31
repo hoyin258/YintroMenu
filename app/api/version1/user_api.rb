@@ -53,19 +53,6 @@ module Version1
         present :data, orders, with: Entities::Order
       end
 
-
-      desc 'Returns user list'
-      params do
-        use :pagination
-      end
-      get do
-        users = User
-        .paginate(page: params[:page], per_page: params[:per_page])
-        .order(updated_at: :desc)
-
-        present :status, "Success"
-        present :data, users, with: Entities::User
-      end
     end
   end
 end
