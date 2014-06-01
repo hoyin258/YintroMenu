@@ -45,7 +45,7 @@ module Version1
         requires :password, type: String
         use :pagination
       end
-      put "orders/:id/received" do
+      post "orders/:id/received" do
         admin_user = AdminUser.find_by(email: params[:email])
         if admin_user.valid_password?(params[:password])
           order = Order.find(params[:id])
@@ -65,7 +65,7 @@ module Version1
         requires :password, type: String
         use :pagination
       end
-      put "orders/:id/made" do
+      post "orders/:id/made" do
         admin_user = AdminUser.find_by(email: params[:email])
         if admin_user.valid_password?(params[:password])
           order = Order.find(params[:id])
