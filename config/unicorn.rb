@@ -13,7 +13,6 @@ stderr_path "/var/www/yintro_menu/log/unicorn.log"
 stdout_path "/var/www/yintro_menu/log/unicorn.log"
 
 # Unicorn socket
-listen "/tmp/unicorn.[app name].sock"
 listen "/tmp/unicorn.yintro_menu.sock"
 
 # Number of processes
