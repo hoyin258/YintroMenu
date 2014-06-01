@@ -29,13 +29,10 @@ ActiveAdmin.register Order do
       panel 'Order Detail' do
         ul
         order.items.each do |item|
-          li
-            item.food.name
-            item.price
+          li item.food.name
         end
 
       end
     end
   end
-
 end

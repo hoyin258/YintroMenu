@@ -32,9 +32,8 @@ module Version1
         admin_user = AdminUser.find_by(email: params[:email])
         if admin_user.valid_password?(params[:password])
           present :status, "Success"
-          present :data,
-                  Order.by_store_id(admin_user.store_id)
-                  .paginate(page: params[:page], per_page: params[:per_page]), with: Entities::Order
+          present :data,  Order.by_store_id(admin_user.store_id), with: Entities::Order
+
         else
           error!({error: "401 Unauthorized"}, 401)
         end

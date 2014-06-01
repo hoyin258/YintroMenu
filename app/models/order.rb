@@ -9,10 +9,8 @@ class Order < ActiveRecord::Base
 
 
   scope :by_store_id, lambda { |id|
-    joins(items: [:food, :size])
-    .joins(:user)
-    .includes(items: [:food, :size])
-    .includes(:user)
+
+    includes({items: [:food, :size]}, :user)
     .where(store_id: id)
     .order(id: :desc)
   }
