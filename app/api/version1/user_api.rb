@@ -22,8 +22,8 @@ module Version1
             user = User.new(
                 facebook_name: params[:facebook_name],
                 facebook_id: params[:facebook_id],
-                gcm: params[:gcm],
             )
+            user.gcm = params[:gcm]
             user.email = params[:facebook_id].to_s + "@facebook.com" if params[:email].present?
             user.name = params[:facebook_name].to_s if params[:name].present?
             user.facebook_accesstoken = params[:facebook_accesstoken].to_s if params[:facebook_accesstoken].present?
