@@ -8,13 +8,13 @@ class Food < ActiveRecord::Base
   accepts_nested_attributes_for :items, allow_destroy: true
 
   has_attached_file :picture,
-                    :url  => "/assets/images/:style/:id.:basename.:extension",
+                    :url => "/assets/images/:style/:id.:basename.:extension",
                     :path => ":rails_root/public/assets/images/:style/:id.:basename.:extension",
-                    :styles => { :large => "1024x1024>", :thumb => "100x100>" },
+                    :styles => {:large => "1024x1024>", :thumb => "100x100>"},
                     :default_url => "/assets/images/missing.jpg"
   validates_attachment :picture,
-                       :content_type => { :content_type => /\Aimage/ },
-                       :size => { :less_than => 2.megabytes  }
+                       :content_type => {:content_type => /\Aimage/},
+                       :size => {:less_than => 2.megabytes}
 
 
   def large
@@ -29,11 +29,11 @@ class Food < ActiveRecord::Base
     picture.url :thumb
   end
 
-  scope :by_store_id,  lambda { |id|
+  scope :by_store_id, lambda { |id|
     includes(category: :store, items: :size).where("stores.id" => id).order(:id)
   }
 
-  scope :by_category_id,  lambda { |id|
+  scope :by_category_id, lambda { |id|
     includes(items: :size).where(category: id).order(:id)
   }
 

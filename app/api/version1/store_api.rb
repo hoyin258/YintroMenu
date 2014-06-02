@@ -4,7 +4,6 @@ module Version1
 
     resource :stores do
 
-
       desc 'Returns store detail by store id'
       get ":id" do
         present :status, "Success"
@@ -12,33 +11,17 @@ module Version1
       end
 
 
-      desc 'Returns categories list by store id'
-      params do
-        use :pagination
-      end
-      get ":id/categories" do
-        categories = Category
-        .where(store_id: params[:id])
-        .paginate(page: params[:page], per_page: params[:per_page])
-        .order(id: :asc)
-
-        cache(key: "api:categories:#{params[:id]}", expires_in: 1.minutes) do
-          present :status, "Success"
-          present :data, categories, with: Entities::Category
-        end
-      end
-
-
       desc 'Returns all food by store id'
       get ":id/foods" do
+        categories = Category.where(store_id: params[:id]).order(id: :asc)
         foods = Food.by_store_id(params[:id])
 
-        cache(key: "api:foods:#{params[:id]}", expires_in: 1.minutes) do
+        cache(key: "api:foods:#{params[:id]}", expires_in: 1.days) do
           present :status, "Success"
-          present :data, foods, with: Entities::Food
+          present :foods, foods, with: Entities::Food
+          present :categories, categories, with: Entities::Category
         end
       end
-
 
     end
   end
