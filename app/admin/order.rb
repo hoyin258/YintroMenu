@@ -9,6 +9,19 @@ ActiveAdmin.register Order do
     end
   end
 
+  filter :id
+  filter :order_num
+  filter :phone
+  filter :created_at
+
+  index do
+    selectable_column
+    column :order_num
+    column :name
+    column :phone
+    column :created_at
+    actions
+  end
 
   show do |order|
     attributes_table do
